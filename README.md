@@ -5,6 +5,10 @@ Utiliza Library
 Microsoft Internet Controls |
 Microsoft HTML Object Library
 
+Utilizar o módulo [mdlApis] e a classe [ieRV]
+
+
+
 Framework De automação Web usando IExplorer Object
 
 Olá , Me chamo Ronan Vico , Analista e Consultor VBA.
