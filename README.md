@@ -2,7 +2,7 @@
 
 IMPORTANTE - >
 Utiliza Library
-Microsoft Internet Controls
+Microsoft Internet Controls |
 Microsoft HTML Object Library
 
 Framework De automação Web usando IExplorer Object
