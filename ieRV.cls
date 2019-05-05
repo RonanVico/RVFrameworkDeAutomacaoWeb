@@ -457,7 +457,7 @@ On Error GoTo trataerro
     On Error Resume Next
     Call execScript(ie, scriptJS)
     'Pega a respsota da função
-    isVisible = IIf(ie.Document.getElementById(uniqID).InnerText = "true", True, False)
+    isVisible = IIf(ie.Document.getElementById(uniqID).innerText = "true", True, False)
     Exit Function
 trataerro:
     Err.Raise Err.Number, , Err.Description
@@ -1046,10 +1046,12 @@ prox:
         End If
         
     Next e
-
+    
+fim:
     Set ELEMENTS = Nothing
     Exit Function
 Tratar_Erro:
+  GoTo fim
   Stop
     Debug.Print Err.Number; Err.Description
   Resume
@@ -1369,7 +1371,7 @@ Public Sub TableToRange(ByRef TABLE As IHTMLTable, rg As Range)
     Dim r As Long, c As Long
     For r = 0 To TABLE.Rows.Length - 1
         For c = 0 To TABLE.Rows(r).Cells.Length - 1
-            rg.Offset(r, c).Value = TABLE.Rows(r).Cells(c).InnerText
+            rg.Offset(r, c).Value = TABLE.Rows(r).Cells(c).innerText
         Next
     Next r
 End Sub
