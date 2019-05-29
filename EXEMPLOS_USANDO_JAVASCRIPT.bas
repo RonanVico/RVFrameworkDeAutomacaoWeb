@@ -19,6 +19,7 @@ Public Sub VaAoGooglePesquiseWikipedia_Apenas_Com_Javascripto()
         Call .NAVEGAR("www.google.com.br")
         Call .waitElem("document.getElementsByName('q').item(0)", ".innerText = 'Wikipedia'", 20)
         'Call ie.getElement(20, "tagname", "input", "title", "pesquisar").setAttribute("innerText", "Wikipedia")
+        Call .wait(3000)
         Call .waitElem("document.getElementsByName('btnK').item(0)", ".click()", 20)
         'Call ie.getElement(20, "tagname", "input", "value", "*pesquisa*", "parentNode.tagname", "CENTER").Click
         Stop
