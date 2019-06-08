@@ -97,8 +97,10 @@ Public Sub Utilizando_IE()
     With ie
         .iniciaIE
         .NAVEGAR ("https://www.linkedin.com/in/ronan-vico/")
+        '.iniciaIE SW_SHOWNORMAL, False
+        '.NAVEGAR ("https://github.com/RonanVico/")
         .iniciaIE SW_SHOWNORMAL, False
-        .NAVEGAR ("https://github.com/RonanVico/")
+        .NAVEGAR ("https://www.youtube.com/watch?v=y-tQq3DUVvw")
     End With
 End Sub
 
