@@ -14,14 +14,14 @@ Option Explicit
 
 
 
-'PeÁo porfavor , para me ajudarem com uma recomendaÁ„o na pagina do linkedin e ou  um Star no github , ajuda bastante pessoal!
+'Pe√ßo porfavor , para me ajudarem com uma recomenda√ß√£o na pagina do linkedin e ou  um Star no github , ajuda bastante pessoal!
 'https://www.linkedin.com/in/ronan-vico/
 'https://github.com/RonanVico/
 
 ' ----------------------------------------------------------------
-' Purpose: Framework criado para ajudar na automaÁ„o web
+' Purpose: Framework criado para ajudar na automa√ß√£o web
 ' levei cerca de 1 ano para aprender tudo que foi colocado no framework , muita coisa foi retirada
-' por inutlidade ou por melhorias que subistituiram cÛdigos antigos.
+' por inutlidade ou por melhorias que subistituiram c√≥digos antigos.
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
 
@@ -73,7 +73,7 @@ End Enum
 
 ' ----------------------------------------------------------------
 ' Procedure Name: iniciaIE
-' Purpose: garante a inicializaÁ„o do internet explorer utilizando alguns parametros
+' Purpose: garante a inicializa√ß√£o do internet explorer utilizando alguns parametros
 ' Parameter SHOW_IE (IE_WINDOW_SHOW): Como mostar o Ie
 ' Parameter KILL_ALL_OTHERS_IE (Boolean): Matar todos os IES ja abertos
 ' Parameter IE_TYPE (IE_TYPE): Pode ser IE ou IEMedium
@@ -123,14 +123,14 @@ Public Sub iniciaIE(Optional ByVal SHOW_IE As IE_WINDOW_SHOW = IE_WINDOW_SHOW.SW
     Exit Sub
     
 TESTE_ERR:
-    If Err.Number = 429 Or InStr(Err.Description, "Erro de automaÁ„o") <> 0 Then
+    If Err.Number = 429 Or InStr(Err.Description, "Erro de automa√ß√£o") <> 0 Then
         If tentativas > 25 Then Exit Sub
         tentativas = tentativas + 1
         WriteLog ("FECHANDO IES ABERTOS...")
         closeAllIE
         'Call taskkillSafe("iexplore.exe", True)
         Call killProcess("iexplore.exe")
-        WriteLog ("RETORNANDO A iniciaÁ„o do Internet explorer!")
+        WriteLog ("RETORNANDO A inicia√ß√£o do Internet explorer!")
         wait (2000)
         Resume
     ElseIf tentativas < 2 Then
@@ -148,12 +148,12 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: NAVEGAR
-' Purpose: Navegar o IE , SÛ que de um jeito mais facil de entender
-' Parameter url (String): URL que vocÍ quer ir
-' Parameter SHOW_IE (IE_WINDOW_SHOW): como vocÍ qer mostrar o IE Hide ou maximized ou etc
-' Parameter navOptionsPodeSomarOsTipos (NAVIGATION_OPTIONS): OpÁıes de navegaÁıes podendo ser somadas
+' Purpose: Navegar o IE , S√≥ que de um jeito mais facil de entender
+' Parameter url (String): URL que voc√™ quer ir
+' Parameter SHOW_IE (IE_WINDOW_SHOW): como voc√™ qer mostrar o IE Hide ou maximized ou etc
+' Parameter navOptionsPodeSomarOsTipos (NAVIGATION_OPTIONS): Op√ß√µes de navega√ß√µes podendo ser somadas
 ' Parameter targetFrame (TARGETFRAME_OPTIONS): Target
-' Parameter postData (Variant): Isso È um pouco mais avanÁado mas È o postdata do request
+' Parameter postData (Variant): Isso √© um pouco mais avan√ßado mas √© o postdata do request
 ' Parameter Headers (Variant): header do request
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -186,7 +186,7 @@ RIP:
       Case 0
       Case 91
           MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure NAVEGAR, " & vbNewLine & _
-            "INICIE O INTERNET EXPLORER! OBJETO N√O ENCONTRADO " & Erl & ".", vbCritical
+            "INICIE O INTERNET EXPLORER! OBJETO N√ÉO ENCONTRADO " & Erl & ".", vbCritical
       Case Else
         MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure NAVEGAR, line " & Erl & "."
     End Select
@@ -198,8 +198,8 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: closeAllIE
-' Purpose: FunÁ„o que feixa todos os IEs aberto ou ent„o sÛ o da URL.
-' Parameter url (String): url se vc quiser fechar sÛ o q CONTEM a url
+' Purpose: Fun√ß√£o que feixa todos os IEs aberto ou ent√£o s√≥ o da URL.
+' Parameter url (String): url se vc quiser fechar s√≥ o q CONTEM a url
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
 Public Function closeAllIE(Optional ByVal url As String = "")
@@ -235,8 +235,8 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: aceitaIE11Alert
-' Purpose:  'DEVIDO A UMA JANELA DE "INTERNET EXPLORER 11" SOBRE SEGURAN«A APARECER
-'            '» NECESSARIO FECHAR ESSA PORCARIA , JA Q EU NAO ACHEI O REGISTRO DESSE LIXO
+' Purpose:  'DEVIDO A UMA JANELA DE "INTERNET EXPLORER 11" SOBRE SEGURAN√áA APARECER
+'            '√à NECESSARIO FECHAR ESSA PORCARIA , JA Q EU NAO ACHEI O REGISTRO DESSE LIXO
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
 Private Sub aceitaIE11Alert()
@@ -257,9 +257,9 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: aceitaAlerta
-' Purpose:Aceita qualquer tipo de alerta ou popup , e da a opÁ„o de retornar como erro
+' Purpose:Aceita qualquer tipo de alerta ou popup , e da a op√ß√£o de retornar como erro
 ' a mensagem contida nesse alerta!!
-' Parameter RaiseError (Boolean): Sobe um erro onde a descriÁ„o È o texto da mensagem
+' Parameter RaiseError (Boolean): Sobe um erro onde a descri√ß√£o √© o texto da mensagem
 ' Return Type: Boolean
 ' Author: Ronan Vico
 ' Date: 17 10 2018 by RV
@@ -271,7 +271,7 @@ Public Function aceitaAlerta(Optional RaiseError As Boolean = True) As Boolean
     Dim hwndDentro As Long
     Dim textodedentro As String
     ' wait for the download dialogue (IEFrame/Frame Notification Bar/DirectUIHWND)
-    frm_hwnd = FindWindowExA(0, 0, "#32770", "Mensagem da p·gina da web")
+    frm_hwnd = FindWindowExA(0, 0, "#32770", "Mensagem da p√°gina da web")
     If frm_hwnd = 0 Then frm_hwnd = FindWindowExA(0, 0, "#32770", "Internet Explorer")
     
     If frm_hwnd <> 0 Then
@@ -333,7 +333,7 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: wait
-' Purpose: Espera alguns segundos ,muito util na automaÁ„o web.
+' Purpose: Espera alguns segundos ,muito util na automa√ß√£o web.
 ' Parameter ms (Single):
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -351,8 +351,8 @@ End Sub
 ' ----------------------------------------------------------------
 ' Procedure Name: getIeWindowWhere
 ' Purpose: Procura e retorna uma Janela internet explorer que contenha no URL o parametro passado
-' por exemplo se vocÍ abrir manualmente um Google.com.br , pode setar num objeto atraves dessa funÁ„o.
-' Quando usar essa funÁ„o ? Quando janelas popups abrirem em outros Internet explorer e vocÍ consegue
+' por exemplo se voc√™ abrir manualmente um Google.com.br , pode setar num objeto atraves dessa fun√ß√£o.
+' Quando usar essa fun√ß√£o ? Quando janelas popups abrirem em outros Internet explorer e voc√™ consegue
 ' mudar o objeto para a outra janela , apenas utilizando o URl que ela contem.
 ' Parameter instrLocationURL (String):
 ' Return Type: InternetExplorer
@@ -378,8 +378,8 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: disableAlerts
-' Purpose: Desabilita a funÁ„o alert() , util quando vocÍ nao qer cair num travamento
-'  nem sempre funciona tem paginas q acabam n„o funcionando
+' Purpose: Desabilita a fun√ß√£o alert() , util quando voc√™ nao qer cair num travamento
+'  nem sempre funciona tem paginas q acabam n√£o funcionando
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
 Public Sub disableAlerts()
@@ -388,9 +388,9 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: execScript
-' Purpose:Executa um javascript no internet explorer , facil nÈ
+' Purpose:Executa um javascript no internet explorer , facil n√©
 ' Parameter script (String): O script em javascripto
-' Parameter Lenguage (String): cara na vdd vc sÛ vai uasr Javascript ignora isso
+' Parameter Lenguage (String): cara na vdd vc s√≥ vai uasr Javascript ignora isso
 ' Parameter RaiseError (Boolean): Sobe um err.raise se e for true
 ' Return Type: String
 ' Author: Ronan Vico
@@ -404,8 +404,8 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: isVisible
-' Purpose:'Cria uma funÁ„o em JS que retorna se o elemento esta visivel ou n„o
-'            'Cria um elemento html pra jogar a resposta , joga a resposta da funÁ„o
+' Purpose:'Cria uma fun√ß√£o em JS que retorna se o elemento esta visivel ou n√£o
+'            'Cria um elemento html pra jogar a resposta , joga a resposta da fun√ß√£o
 '            'visible do JS no elemento para depois pegar e retorna
 ' Parameter scriptGetElement (String):
 ' Return Type: Boolean
@@ -456,7 +456,7 @@ On Error GoTo trataerro
     
     On Error Resume Next
     Call execScript(ie, scriptJS)
-    'Pega a respsota da funÁ„o
+    'Pega a respsota da fun√ß√£o
     isVisible = IIf(ie.Document.getElementById(uniqID).innerText = "true", True, False)
     Exit Function
 trataerro:
@@ -466,7 +466,7 @@ End Function
 
 
 Public Sub PrintaHtmlNoWORD(ie As Object)
-    'apenas para fins de programaÁ„o , pegar o texto do documento durante o desenvolvimento
+    'apenas para fins de programa√ß√£o , pegar o texto do documento durante o desenvolvimento
     Call CreateObject("WScript.Shell").Run("taskkill /F /IM winword.exe /t", 0, True)
     Dim doc As Object
     Dim wd As Object
@@ -485,12 +485,12 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: waitElem
-' Purpose: Atraves de um Javascript esperamos o elemento aparecer na pagina e executamos alguma funÁ„o ,
+' Purpose: Atraves de um Javascript esperamos o elemento aparecer na pagina e executamos alguma fun√ß√£o ,
 '                    por exemplo "document.getElementsByName(""name"")(0)" , <- Exemplo de javascript
 ' Parameter scriptGetElement (String): /\
 ' Parameter Action (String): ".value = ''" , ".click()" , ".innerText = '' "
-' Parameter seconds (Integer): Segundos pra ficar esperando atÈ aperecer
-' Parameter RaiseError (Boolean): Subir erro ? Se n„o encontrar e for raiseError = true ent„o vai dar Erro
+' Parameter seconds (Integer): Segundos pra ficar esperando at√© aperecer
+' Parameter RaiseError (Boolean): Subir erro ? Se n√£o encontrar e for raiseError = true ent√£o vai dar Erro
 ' Parameter WaitPageComplete (Boolean): Esperar pagina ficar readystate complete
 ' Parameter waitVisibleTrue (Boolean): Esperar ficar visivel o elemento
 ' Return Type: Boolean
@@ -516,7 +516,7 @@ waitElem = False
       If waitVisibleTrue Then
          While isVisible(scriptGetElement) = False
             DoEvents
-            Err.Raise 123, "WaitElem Function", "ELEMENTO PRESENTE MAS  N√O VISIVEL!"
+            Err.Raise 123, "WaitElem Function", "ELEMENTO PRESENTE MAS  N√ÉO VISIVEL!"
             Call wait(3000)
          Wend
       End If
@@ -536,14 +536,14 @@ Err_handler:
       End If
       Resume
     End If
-    If RaiseError Then Err.Raise "7", , "ELEMENTO N√O ENCONTRADO " & scriptGetElement
+    If RaiseError Then Err.Raise "7", , "ELEMENTO N√ÉO ENCONTRADO " & scriptGetElement
 End Function
 
 
 
 ' ----------------------------------------------------------------
 ' Procedure Name: RegistryIE
-' Purpose: Altera alguns registros di internet explorer , È mais facil ler a funÁ„o toda , pois
+' Purpose: Altera alguns registros di internet explorer , √© mais facil ler a fun√ß√£o toda , pois
 '       cada registro significa uma coisa
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -562,15 +562,15 @@ Public Sub RegistryIE()
         'COLOCA O ZOOM em 100%
         shl.regWrite IE_KEYS & "\Zoom\ZoomFactor", 100000, "REG_DWORD"
         'shl.regWrite "HKCU\Software\Microsoft\Internet Explorer\Zoom\ResetZoomOnStartup", 1, "REG_DWORD" TESTAR
-        'N„o Salva no historico
+        'N√£o Salva no historico
         shl.regWrite MAIN_KEYS & "\Save_Session_History_On_Exit", "no", "REG_SZ"
         'Limpa o historico
         shl.regWrite MAIN_KEYS & "\ClearBrowsingHistoryOnExit", 1, "REG_DWORD"
         'Libera popup de janelas
         'shl.regWrite IE_KEYS & "\New Windows\PopupMgr", "0", "REG_DWORD"
-        'TESTAR DESABILITA EXTENSıES
+        'TESTAR DESABILITA EXTENS√µES
         shl.regWrite MAIN_KEYS & "\Enable Browser Extensions", "no", "REG_SZ"
-        'N„o avisar se o download acabou evitando janelas
+        'N√£o avisar se o download acabou evitando janelas
         shl.regWrite MAIN_KEYS & "\NotifyDownloadComplete", "no", "REG_SZ"
         'tira a Urltoolbar de cima
         'shl.regWrite MAIN_KEYS & "\Show_URLToolBar", "no", "REG_SZ"
@@ -608,8 +608,8 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: retiraAlertJS
-' Purpose: Meio bosta esssa funÁ„o mas ja ajudou em algumas vezes
-' desligamos todos os alerts escrevendo alert errado assim af unÁ„io n„o ira funcionar
+' Purpose: Meio bosta esssa fun√ß√£o mas ja ajudou em algumas vezes
+' desligamos todos os alerts escrevendo alert errado assim af un√ß√£io n√£o ira funcionar
 ' Parameter htmlDoc (Object): documento html da onde queremos tirar o alertas
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -657,11 +657,11 @@ End Sub
 ' Procedure Name: setPropertiesIES
 ' Purpose: Mudar propriedades de 1 unico ie ou de todos
 ' Parameter url (String): Url do nosso internet explorer se branco , modifica de todos
-' Parameter AddressBar (Boolean): Barra de endereÁo Show or not
+' Parameter AddressBar (Boolean): Barra de endere√ßo Show or not
 ' Parameter MenuBar (Boolean): Barra de menu Show or not
 ' Parameter StatusBar (Boolean): Status bar shor or not
 ' Parameter Toolbar (Boolean): Barra de ferramenta show or not
-' Parameter TheatherMode (Boolean): Teather mode È quando aperta f11
+' Parameter TheatherMode (Boolean): Teather mode √© quando aperta f11
 ' Parameter visible (Boolean):
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -731,7 +731,7 @@ End Sub
 ' ----------------------------------------------------------------
 ' Procedure Name: DownloadFileSyncIE
 ' Purpose: Aceitar o alerta de "Salvar" no internet explorer
-' quando clicamos em um link de salvar aparece uma barra na posiÁ„o inferior do internet explorer
+' quando clicamos em um link de salvar aparece uma barra na posi√ß√£o inferior do internet explorer
 'mandamos um ALT S para salvar ,
 ' Parameter save_as (String):
 ' Return Type: String
@@ -739,7 +739,7 @@ End Sub
 ' Date: 05/03/2019
 ' ----------------------------------------------------------------
 Public Function DownloadFileSyncIE(ByVal save_as As String) As String
-'IMPORTANTISSIMO -> … NECESSARIO O IE ESTAR VISIVEL
+'IMPORTANTISSIMO -> √â NECESSARIO O IE ESTAR VISIVEL
 Dim tentativa As Integer
 On Error GoTo trata_erro
 inicio:
@@ -770,8 +770,8 @@ DownloadFileSyncIE = ""
         If Len(Join(ieHwnds)) = 0 Then
             'tenta pega a janela mesmo se o window sexplorer tiver pal
             ie_hwnd = FindWindowExA(0, 0, "IEFrame", vbNullString)
-            'Se n„o pegar tambem ent„o da erro
-            If ie_hwnd = 0 Then Err.Raise 23, , "N„o h· explorer aberto !!"
+            'Se n√£o pegar tambem ent√£o da erro
+            If ie_hwnd = 0 Then Err.Raise 23, , "N√£o h√° explorer aberto !!"
         End If
         
         If Len(Join(ieHwnds)) <> 0 Then
@@ -788,7 +788,7 @@ DownloadFileSyncIE = ""
                If GetWindowLongA(frm_hwnd, -16) And &H10000000 Then Exit Do    ' If visible
             End If
         End If
-        If contador = 400 Then Err.Raise 5, , "N„o foi encontrado janela de download"
+        If contador = 400 Then Err.Raise 5, , "N√£o foi encontrado janela de download"
         contador = contador + 1
         DoEvents
     Loop
@@ -877,7 +877,7 @@ End Function
 ' Procedure Name: CriaPasta
 ' Purpose:  Cria uma pasta , usando comandos do shell
 ' Parameter vcPasta (String): A pasta q vc quer criar (caminho)
-' Parameter waitDir (Boolean): se espera ou n„o a pasta ser criada , util quando usadas em servidores q dependem de tempo de resposta
+' Parameter waitDir (Boolean): se espera ou n√£o a pasta ser criada , util quando usadas em servidores q dependem de tempo de resposta
 ' Return Type: Boolean
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -887,7 +887,7 @@ On Error GoTo fim
     CriaPasta = False
     vcPasta = vcPasta & IIf(Right(vcPasta, 1) <> "\", "\", "")
 
-    'Para n„o criar na raiz c:\ d:\ e:\, etc
+    'Para n√£o criar na raiz c:\ d:\ e:\, etc
     If Len(vcPasta) <= 3 Then Exit Function
 
     If Dir(vcPasta, vbDirectory) = "" Then
@@ -908,10 +908,10 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: RecursiveGetElementFunction
-' Purpose:'FunÁ„o que percorre a pagina procurando o elemento pelos parametros
+' Purpose:'Fun√ß√£o que percorre a pagina procurando o elemento pelos parametros
 '          'necessario recursiva devido a frames dento de frames.
 ' Parameter OneAttributeNameOneValueName (Variant): ParamARray onde recebe Um attributo
-' e um valor do attributo , por exemplo (20,"type","input") ou ent„o (20,"tagname","div") , ou ent„o (20,"type","input","tagname","div")
+' e um valor do attributo , por exemplo (20,"type","input") ou ent√£o (20,"tagname","div") , ou ent√£o (20,"type","input","tagname","div")
 ' Return Type: IHTMLElement
 ' Author: Ronan Vico
 ' Date: 05/06/2018
@@ -924,9 +924,9 @@ On Error GoTo Tratar_Erro
   Dim param As Variant
   Dim elemRetorno As Object
   Dim arrAux    As Variant
-  Dim DURA«√O   As Date
+  Dim DURA√á√ÉO   As Date
 
-  DURA«√O = VBA.Now()
+  DURA√á√ÉO = VBA.Now()
   
 
   If UBound(OneAttributeNameOneValueName, 1) = 0 Or UBound(OneAttributeNameOneValueName, 1) Mod 2 <> 1 Then
@@ -935,13 +935,13 @@ On Error GoTo Tratar_Erro
   
   For Each param In OneAttributeNameOneValueName
     If param = "" Then
-      Err.Raise 667, "GetElement", "N„o pode passar parametros em branco!"
+      Err.Raise 667, "GetElement", "N√£o pode passar parametros em branco!"
     End If
     param = VBA.LCase(param)
   Next
   
-  'Fica tentando N segundos ou atÈ que o elemento ja seja encontrado
-  While (VBA.Now() < DURA«√O + VBA.TimeSerial(0, 0, SEGUNDOS_PARA_FICAR_TENTANDO)) And (elemRetorno Is Nothing)
+  'Fica tentando N segundos ou at√© que o elemento ja seja encontrado
+  While (VBA.Now() < DURA√á√ÉO + VBA.TimeSerial(0, 0, SEGUNDOS_PARA_FICAR_TENTANDO)) And (elemRetorno Is Nothing)
     arrAux = OneAttributeNameOneValueName
     Set elemRetorno = RecursiveGetElementFunction(ie.Document, arrAux)
   Wend
@@ -957,11 +957,11 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: RecursiveGetElementFunction
-' Purpose:'FunÁ„o que percorre a pagina procurando o elemento pelos parametros
+' Purpose:'Fun√ß√£o que percorre a pagina procurando o elemento pelos parametros
 '          'necessario recursiva devido a frames dento de frames.
 ' Parameter doc (Object): Documento HTML , onde iremos percorrer todos os elementos
 ' Parameter OneAttributeNameOneValueName (Variant): ParamARray onde recebe Um attributo
-' e um valor do attributo , por exemplo (20,"type","input") ou ent„o (20,"tagname","div") , ou ent„o (20,"type","input","tagname","div")
+' e um valor do attributo , por exemplo (20,"type","input") ou ent√£o (20,"tagname","div") , ou ent√£o (20,"type","input","tagname","div")
 ' Return Type: IHTMLElement
 ' Author: Ronan Vico
 ' Date: 05/06/2018
@@ -969,7 +969,7 @@ End Function
 Private Function RecursiveGetElementFunction(doc As Object, ByRef OneAttributeNameOneValueName As Variant) As IHTMLElement
 On Error GoTo Tratar_Erro
 'ATUALIZADA DIA 06 11 2018 , ERRO NO CONTENTDOCUMENT DO FRAME
-'Se vocÍ for usar essa funÁ„o tem q arrumar isso usando a biblioteca html
+'Se voc√™ for usar essa fun√ß√£o tem q arrumar isso usando a biblioteca html
 'Made by RV
     Set RecursiveGetElementFunction = Nothing
     
@@ -990,11 +990,11 @@ On Error GoTo Tratar_Erro
     For Each e In ELEMENTS
     
         If needToCheck(e.tagname) Then
-            'Se for um frame , È necessario repassar o ddocumento , por isso È uma recursiva
+            'Se for um frame , √© necessario repassar o ddocumento , por isso √© uma recursiva
            If VBA.LCase(Right(e.tagname, 5)) = "frame" Then
                 'chama a recursividade , sei que parece ambiguo
-                'porÈm È necessario setar um elemento do tipo FRAMe ou IFRAME corretamente
-                'pois se n„o, n„o ira funcionar em algumas paginas mais atualizadas onde o Documento n„o ia atÈ o elemento
+                'por√©m √© necessario setar um elemento do tipo FRAMe ou IFRAME corretamente
+                'pois se n√£o, n√£o ira funcionar em algumas paginas mais atualizadas onde o Documento n√£o ia at√© o elemento
                 Select Case VBA.LCase(e.tagname)
                     Case "iframe"
                       Set eiframe = e
@@ -1013,21 +1013,21 @@ On Error GoTo Tratar_Erro
               On Error GoTo prox
                 For i = LBound(OneAttributeNameOneValueName, 1) To UBound(OneAttributeNameOneValueName, 1) Step 2
                   Props = VBA.Split(OneAttributeNameOneValueName(i), ".")
-                  'Verifica se È um objeto dentro de objeto por exemplo "elem.parentNode.Tagname"
-                  'Se for , È necessario "Setar" os objetos em cadeia atÈ chegar na ultima propriedade
+                  'Verifica se √© um objeto dentro de objeto por exemplo "elem.parentNode.Tagname"
+                  'Se for , √© necessario "Setar" os objetos em cadeia at√© chegar na ultima propriedade
                   If (UBound(Props)) > 0 Then
                     Set elemAux = e
-                    'Vai setando os objetos de dentro atÈ chegar na propriedade
+                    'Vai setando os objetos de dentro at√© chegar na propriedade
                     For j = LBound(Props) To UBound(Props) - 1
                         Set elemAux = CallByName(elemAux, Props(j), VbGet)
                     Next j
                     
                     If Not VBA.Trim(VBA.LCase(CallByName(elemAux, Props(j), VbGet))) Like VBA.LCase(OneAttributeNameOneValueName(i + 1)) Then
-                        'CondiÁ„o invalida , vai para o proximo elemento
+                        'Condi√ß√£o invalida , vai para o proximo elemento
                         GoTo prox
                     End If
                   ElseIf Not VBA.LCase(CallByName(e, OneAttributeNameOneValueName(i), VbGet)) Like VBA.LCase(OneAttributeNameOneValueName(i + 1)) Then
-                    'CondiÁ„o invalida , vai para o proximo elemento
+                    'Condi√ß√£o invalida , vai para o proximo elemento
                     GoTo prox
                   End If
                 Next i
@@ -1059,7 +1059,7 @@ End Function
 
 
 Private Function needToCheck(ByVal tagname As String) As Boolean
-'FunÁ„o criada pra n„o ficar perdendo tempo em algumas tags
+'Fun√ß√£o criada pra n√£o ficar perdendo tempo em algumas tags
 needToCheck = False
     tagname = UCase(tagname)
     Select Case tagname
@@ -1097,15 +1097,16 @@ Public Function SendToWindowSaveAs(ByVal save_as As String, Optional ByVal Texto
     'Find Save as Window
     hwnd = 0
     For i = 1 To 15
-        
-        If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", TextoDoTituloDaJanela)
+        if TextoDoTituloDaJanela <> vbNullString then 
+          If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", TextoDoTituloDaJanela)
+        end if 
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Escolher arquivo a carregar")
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar Imagem")
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar")
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Save Image")
-        If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar SaÌda de impress„o como")
+        If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar Sa√≠da de impress√£o como")
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "save output print as")
-        If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar p·gina da Web")
+        If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar p√°gina da Web")
         If hwnd <> 0 Then Exit For
         Call wait(500)
     Next i
@@ -1119,31 +1120,31 @@ Public Function SendToWindowSaveAs(ByVal save_as As String, Optional ByVal Texto
             hwndDUIViewWndClassName = FindWindowExA(hwnd, 0, "DUIViewWndClassName", vbNullString)
             If hwndDUIViewWndClassName Then Exit For
             Call wait(200)
-        Next i: If i = 30 Then Err.Raise 7, "N√O FOI ENCONTRADO JANELA DE SALVAR"
+        Next i: If i = 30 Then Err.Raise 7, "N√ÉO FOI ENCONTRADO JANELA DE SALVAR"
         '----------------------------------DirectUIHWND
         For i = 0 To 30
             hwndDirect = FindWindowExA(hwndDUIViewWndClassName, 0, "DirectUIHWND", vbNullString)
             If hwndDirect Then Exit For
             Call wait(200)
-        Next i: If i = 30 Then Err.Raise 7, "N√O FOI ENCONTRADO JANELA DE SALVAR"
+        Next i: If i = 30 Then Err.Raise 7, "N√ÉO FOI ENCONTRADO JANELA DE SALVAR"
         '---------------------------------FloatNotifySink
         For i = 0 To 30
             hwndFNSink = FindWindowExA(hwndDirect, 0, "FloatNotifySink", vbNullString)
             If hwndFNSink Then Exit For
             Call wait(200)
-        Next i: If i = 30 Then Err.Raise 7, "N√O FOI ENCONTRADO JANELA DE SALVAR"
+        Next i: If i = 30 Then Err.Raise 7, "N√ÉO FOI ENCONTRADO JANELA DE SALVAR"
         '-----------------------------------ComboBox
         For i = 0 To 30
             hwndComboBox = FindWindowExA(hwndFNSink, 0, "ComboBox", vbNullString)
             If hwndComboBox Then Exit For
             Call wait(200)
-        Next i: If i = 30 Then Err.Raise 7, "N√O FOI ENCONTRADO JANELA DE SALVAR"
+        Next i: If i = 30 Then Err.Raise 7, "N√ÉO FOI ENCONTRADO JANELA DE SALVAR"
         '----------------------------Edit
         For i = 0 To 30
             hwndEdit = FindWindowExA(hwndComboBox, 0, "Edit", vbNullString)
             If hwndEdit Then Exit For
             Call wait(200)
-        Next i: If i = 30 Then Err.Raise 7, "N√O FOI ENCONTRADO JANELA DE SALVAR"
+        Next i: If i = 30 Then Err.Raise 7, "N√ÉO FOI ENCONTRADO JANELA DE SALVAR"
             
             'DUIViewWndClassName -> DirectUIHWND -> FloatNotifySink -> ComboBox -> Edit
         
@@ -1212,14 +1213,14 @@ SendToWindowOpen = False
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Abrir")
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Abrir Como")
         If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Escolher arquivo a carregar")
+        If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", vbNullString)                                                                                                                     
         If hwnd <> 0 Then Exit For
-        
         Call wait(500)
     Next i
     
-    'se n„o encontrou a janela sai da funÁ„o
+    'se n√£o encontrou a janela sai da fun√ß√£o
     If hwnd = 0 Then
-        'MsgBox "JANELA DE ABRIR N√O ENCONTRADA", vbCritical
+        'MsgBox "JANELA DE ABRIR N√ÉO ENCONTRADA", vbCritical
         Exit Function
     End If
     
@@ -1266,7 +1267,7 @@ End Function
 ' ----------------------------------------------------------------
 ' Procedure Name: SendEnterToSaveOrOpenWindow
 ' Purpose: FEITA POR RONAN VICO , ENVIANDO ENTER PARA UMA JANELA DE SALVAR ARQUIVO COMO.
-'           'DEU TRABALHO PARA FAZER ESTA FUN«√O APESAR DE SER PEQUENA.
+'           'DEU TRABALHO PARA FAZER ESTA FUN√á√ÉO APESAR DE SER PEQUENA.
 ' Author: Ronan Vico
 ' Date: 28/02/2018
 ' ----------------------------------------------------------------
@@ -1278,7 +1279,7 @@ Public Sub SendEnterToSaveOrOpenWindow()
     If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Save Image")
     If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Imprimir")
     If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Print")
-    If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar SaÌda de impress„o como")
+    If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "Salvar Sa√≠da de impress√£o como")
     If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", "save output print as")
     If hwnd = 0 Then hwnd = FindWindowExA(0, 0, "#32770", vbNullString)
     'ENVIA A JANELA MY_HWND , WM_KEY PRA BAIXO , ENTER EM HEXADECIMAL
@@ -1289,13 +1290,13 @@ End Sub
 
 
 Public Sub MouseRightDown()
-    'Clica com lado direito na posiÁ„o que  o cursor do mouse estiver
+    'Clica com lado direito na posi√ß√£o que  o cursor do mouse estiver
     mouse_event &H8, 0, 0, 0, 0 'Mouse  right up
     mouse_event &H10, 0, 0, 0, 0 'Mouse right down
 End Sub
 
 Public Sub MouseLeftDown()
-    'Clica com lado esquerdo  na posiÁ„o que  o cursor do mouse estiver
+    'Clica com lado esquerdo  na posi√ß√£o que  o cursor do mouse estiver
     mouse_event &H2, 0, 0, 0, 0 ' mouse left up
     mouse_event &H4, 0, 0, 0, 0 ' mouse left down
 End Sub
@@ -1344,8 +1345,8 @@ End Function
 
 ' ----------------------------------------------------------------
 ' Procedure Name: ExecScriptAssync
-' Purpose: Executa um Javascripto , porÈm apÛs alguns segundos ,
-'          o motivo disso È evitar que o objeto internet explorer fique travado apÛs
+' Purpose: Executa um Javascripto , por√©m ap√≥s alguns segundos ,
+'          o motivo disso √© evitar que o objeto internet explorer fique travado ap√≥s
 '           algum comando.
 ' Parameter js (String):
 ' Parameter seconds (Long):
@@ -1354,7 +1355,7 @@ End Function
 Public Sub ExecScriptAssync(ByVal js As String, ByVal seconds As Long)
     seconds = seconds * 1000
     If VBA.InStr(js, VBA.Chr(34)) <> 0 Then
-        Err.Raise 123456, "ExecScriptAssync()", "N„o È possivel um JS com Aspas Duplas , use ' (aspas simples no lugar)"
+        Err.Raise 123456, "ExecScriptAssync()", "N√£o √© possivel um JS com Aspas Duplas , use ' (aspas simples no lugar)"
     End If
     Call execScript("setTimeout(""" & js & """, " & seconds & ")")
 End Sub
@@ -1408,7 +1409,7 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: quantos_ies_abertos
-' Purpose: Conta quantos IEs est„o abertos Visiveis ou n„o
+' Purpose: Conta quantos IEs est√£o abertos Visiveis ou n√£o
 ' Return Type: Long
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
@@ -1436,7 +1437,7 @@ End Sub
 
 ' ----------------------------------------------------------------
 ' Procedure Name: SetPrintPDF
-' Purpose: Altera a impressora padr„o
+' Purpose: Altera a impressora padr√£o
 ' Parameter Printer (String): Nome da impressora
 ' Author: Ronan Vico
 ' ----------------------------------------------------------------
